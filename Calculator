@@ -1,0 +1,46 @@
+from art import logo
+
+
+def add(n1,n2):
+  return n1 + n2
+
+def sub(n1,n2):
+  return n1 - n2
+
+def mul(n1,n2):
+  return n1 * n2
+
+def div(n1,n2):
+  return n1 / n2
+
+def exp(n1,n2):
+  return n1 ** n2
+
+operations = {
+  "+":add,
+  "-":sub,
+  "*":mul,
+  "/":div,
+  "**":exp,
+}
+def calculator():
+  print(logo)
+  num1 = float(input("What is the 1st no?: "))
+  for symbols in operations:
+    print(symbols)
+  repeat = True
+  while repeat:
+
+    op_symbol = input("Pick an operation : ")
+    num2 = float(input("What is the next no?: "))
+    calculation = operations[op_symbol]
+    answer = calculation(num1,num2)
+
+    print(f"{num1} {op_symbol} {num2} = {answer}")
+    user = input(f"Type 'y' for further calculation with {answer} 'n' for start a new calculation: ")
+    if user == "y":
+      num1 = answer
+    else:
+      repeat = False  
+      calculator()
+calculator()
